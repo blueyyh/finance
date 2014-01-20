@@ -1,0 +1,132 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			.ui-paginator {
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript">
+ 
+ 			
+		</script>		
+	</ui:define>
+	
+	<ui:define name="content">
+
+	
+
+		<h1 class="title ui-widget-header ui-corner-all">Cash In Advance In-Cell Editing List</h1>
+		<div class="entry"> 
+			
+		
+			<h:form id="toolbarForm">
+				
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" /> 
+				<p:toolbar>
+					<p:toolbarGroup align="left">
+						
+						<p:commandButton action="addCashInAdvanceItem.xhtml?faces-redirect=true" ajax="false"  value="Add New" icon="ui-icon-document" />
+						<p:separator />
+						<p:commandButton value="Refresh" icon="ui-icon-refresh" action="#{cashInAdvanceListBean.reload}" update=":form:items  @parent"/>
+						
+						
+					</p:toolbarGroup>
+				</p:toolbar>
+			</h:form>
+            <p></p>
+            
+			 <h:form id="form">
+			
+
+			    <p:growl id="messages" showDetail="true"/>
+			
+
+			
+			    <p:dataTable id="items" var="item" value="#{cashInAdvanceListBean.modelList}" editable="true" editMode="cell" paginator="true" rows="5" widgetVar="carsTable">
+			
+			        <f:facet name="header">
+			            Cash In Advance In-Cell Editing
+			        </f:facet>
+			
+			        <p:ajax event="cellEdit" listener="#{cashInAdvanceListBean.onCellEdit}" update=":form:messages" />
+					
+			
+			        <p:column headerText="Chinese Name" style="width:14%">
+			               <p:cellEditor>
+			                   <f:facet name="output"><h:outputText value="#{item.chnName}" /></f:facet>
+			                   <f:facet name="input"><p:inputText id="modelInput" value="#{item.chnName}" style="width:96%"/></f:facet>
+			               </p:cellEditor>
+			           </p:column>
+			
+			       <p:column headerText="Employee Name" style="width:14%">
+			            <p:cellEditor>
+			                <f:facet name="output"><h:outputText value="#{item.empName}" /></f:facet>
+			                <f:facet name="input"><p:inputText value="#{item.empName}" style="width:96%" label="balance"/></f:facet>
+			            </p:cellEditor>
+			        </p:column>
+
+			       <p:column headerText="Balance" style="width:14%">
+			            <p:cellEditor>
+			                <f:facet name="output"><h:outputText value="#{item.balance}" /></f:facet>
+			                <f:facet name="input"><p:inputText value="#{item.balance}" style="width:96%" /></f:facet>
+			            </p:cellEditor>
+			        </p:column>
+
+			       <p:column headerText="Remark" style="width:14%">
+			            <p:cellEditor>
+			                <f:facet name="output"><h:outputText value="#{item.remark1}" /></f:facet>
+			                <f:facet name="input"><p:inputText value="#{item.remark1}" style="width:96%" /></f:facet>
+			            </p:cellEditor>
+			        </p:column>
+	
+			       <p:column headerText="Vouch No." style="width:14%">
+			            <p:cellEditor>
+			                <f:facet name="output"><h:outputText value="#{item.vouchNo}" /></f:facet>
+			                <f:facet name="input"><p:inputText value="#{item.vouchNo}" style="width:96%" /></f:facet>
+			            </p:cellEditor>
+			        </p:column>
+
+			       <p:column headerText="Date" style="width:14%">
+			            <p:cellEditor>
+			                <f:facet name="output"><h:outputText value="#{item.date}"> <f:convertDateTime type="date" pattern="yyyy-MM-dd"/></h:outputText></f:facet>
+			                <f:facet name="input"><p:calendar pattern="yyyy-MM-dd" value="#{item.date}" showButtonPanel="true" navigator="true" id="date"/></f:facet>
+			            </p:cellEditor>
+			        </p:column>
+
+			       <p:column headerText="Remark" style="width:14%">
+			            <p:cellEditor>
+			                <f:facet name="output"><h:outputText value="#{item.remark2}" /></f:facet>
+			                <f:facet name="input"><p:inputText value="#{item.remark2}" style="width:96%" /></f:facet>
+			            </p:cellEditor>
+			        </p:column>
+					<p:column style="width:2%" exportable="false">  
+						<p:commandButton action="addCashInAdvanceItem.xhtml?faces-redirect=true" ajax="false"  value="." icon="ui-icon-mail-closed" />
+					</p:column>					
+			        <!-- 	        			        			        			
+			        <p:column headerText="Balance" style="width:25%">
+			            <p:cellEditor>
+			                <f:facet name="output"><h:outputText value="#{car.manufacturer}" /></f:facet>
+			                <f:facet name="input">
+			                    <h:selectOneMenu value="#{car.manufacturer}" style="width:100%">
+			                        <f:selectItems value="#{tableBean.manufacturers}" var="man" itemLabel="#{man}" itemValue="#{man}" />
+			                    </h:selectOneMenu>
+			                </f:facet>
+			            </p:cellEditor>
+			        </p:column>
+					 -->		
+
+			
+			    </p:dataTable>
+			
+			
+			</h:form>				
+	</div>
+
+	</ui:define>
+</ui:composition>

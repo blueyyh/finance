@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+
+	<h:head>
+        <f:facet name="first">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <title>Sprout Auth</title>
+        </f:facet>
+        
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/default.css" />
+
+
+		<ui:insert name="head"></ui:insert>
+        <!--
+        <script type="text/javascript">
+            $(function() {$('.sidebar a').hover(function() {$(this).toggleClass('ui-state-hover');})});
+        </script>
+        
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-12200033-3']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+          </script>
+		  -->
+	</h:head>
+
+	<h:body>
+
+		<div id="header" class="ui-widget ui-widget-header">
+	
+			<div id="logo">
+				
+			</div>
+			
+
+            
+
+		</div>
+
+        <div id="page" class="ui-widget">
+            <div id="sidebar" class="ui-widget-content ui-corner-bottom ui-helper-clearfix ui-shadow">
+
+					<h:form>  
+								  
+						<p:growl id="messages" autoUpdate="true"/>  
+					  
+						<p:panelMenu style="width:200px">  
+							<p:submenu label="帐号管理" rendered="true">  
+								<p:menuitem value="PMS 模拟"  icon="ui-icon-star" /> 						
+							</p:submenu>  
+
+						</p:panelMenu>  
+					  
+					</h:form> 
+
+
+            </div>
+
+            <div id="content">
+                <div class="post">
+                    <ui:insert name="content">...</ui:insert>
+                </div>
+            </div>
+
+            <div style="clear: both;">&nbsp;</div>
+        </div>
+
+		<div id="footer" class="ui-widget ui-widget-header ui-corner-all">
+			<p class="copyright">Sprout @ all rights reserved, 2013 </p>
+		</div>
+		<!--
+            <p:dock id="dockTop" >
+            
+            	
+            
+                <p:menuitem id="top0" value="Home" icon="/resources/images/dock/home.png" url="#"/>
+                <p:menuitem id="top1" value="Music" icon="/resources/images/dock/music.png" url="#"/>
+                <p:menuitem id="top2" value="Video" icon="/resources/images/dock/video.png" url="#"/>
+                <p:menuitem id="top3" value="Email" icon="/resources/images/dock/email.png" url="#"/>
+                <p:menuitem id="top4" value="Portfolio" icon="/resources/images/dock/portfolio.png" url="#"/>
+                <p:menuitem id="top5" value="Link" icon="/resources/images/dock/link.png" url="#"/>
+                <p:menuitem id="top6" value="RSS" icon="/resources/images/dock/rss.png" url="#"/>
+                <p:menuitem id="top7" value="History" icon="/resources/images/dock/history.png" url="#"/>
+            </p:dock>	
+			-->
+        <ui:insert name="status">
+            <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+                <f:facet name="start">
+                    <p:graphicImage value="/images/loading.gif" />
+                </f:facet>
+
+                <f:facet name="complete">
+                    <h:outputText value="" />
+                </f:facet>
+            </p:ajaxStatus>
+        </ui:insert>
+
+	</h:body>
+
+
+
+</f:view>
+</html>

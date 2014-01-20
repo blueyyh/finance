@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/ui.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			.ui-paginator {
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript">
+ 
+ 			
+		</script>		
+	</ui:define>
+	
+	<ui:define name="content">
+
+	
+
+		<h1 class="title ui-widget-header ui-corner-all">Add Cash In Advance Item</h1>
+		<div class="entry"> 
+			
+		
+			<h:form id="toolbarForm">
+				
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" /> 
+				<p:toolbar>
+					<p:toolbarGroup align="left">
+						
+						<p:commandButton  action="listCashInAdvanceItems.xhtml?faces-redirect=true" value="Go to List" icon="ui-icon-document" onclick="newClaimDlg.show()"/>
+						
+						
+					</p:toolbarGroup>
+				</p:toolbar>
+			</h:form>
+            <p></p>
+            
+			 <h:form id="form">
+			
+			   
+			
+				<p:panel header="Cash In Advance" >
+					<h:panelGrid columns="2" id="grid1" cellpadding="5">
+						<h:outputLabel value="Chinese Name: *" for="chnName"></h:outputLabel>
+						<p:inputText id="chnName" value="#{cashInAdvanceBean.ciaItem.chnName}" required="true" />
+						
+						<h:outputLabel value="Employee Name: *" for="empName"></h:outputLabel>
+						<p:inputText id="empName" value="#{cashInAdvanceBean.ciaItem.empName}" />
+						
+			            <h:outputText value="Balance: " for="balance" />  
+			            <p:inputText id="balance" value="#{cashInAdvanceBean.ciaItem.balance}"/> 		
+			            
+			            <h:outputText value="Remark: " for="remark1" />  		
+			            <p:inputTextarea id="remark1" rows="10" cols="50" value="#{cashInAdvanceBean.ciaItem.remark1}" completeMethod="#{cashInAdvanceBean.completeArea1}" queryDelay="750" minQueryLength="4" />  
+			            
+			            <h:outputText value="Vouch No.: " for="vouchNo" />  
+			            <p:inputText id="vouchNo" value="#{cashInAdvanceBean.ciaItem.vouchNo}"/> 		
+			           				
+			            <h:outputText value="Date: " for="date" />
+						<p:calendar pattern="yyyy-MM-dd" value="#{cashInAdvanceBean.ciaItem.date}" showButtonPanel="true" navigator="true" id="date"/>
+						
+			            <h:outputText value="Remark: " for="remark2" />  		
+			            <p:inputTextarea id="remark2" rows="10" cols="50" value="#{cashInAdvanceBean.ciaItem.remark2}" completeMethod="#{cashInAdvanceBean.completeArea2}" queryDelay="750" minQueryLength="4" />  
+
+						<p:commandButton value="reset" icon="ui-icon-trash" type="reset"/>
+						<p:commandButton value="save" icon="ui-icon-disk" action="#{cashInAdvanceBean.save('listCashInAdvanceItems.xhtml')}"/>						  
+					</h:panelGrid>
+				</p:panel>
+
+			
+			
+			</h:form>
+								            
+		
+				
+
+				
+	</div>
+
+	</ui:define>
+</ui:composition>
