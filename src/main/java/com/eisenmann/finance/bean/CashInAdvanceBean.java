@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.eisenmann.finance.bo.EisenmannFinanceBo;
+import com.eisenmann.finance.model.CashInAdvance;
 
 @ManagedBean
 @Component
@@ -20,7 +21,7 @@ public class CashInAdvanceBean {
 	@Autowired	
 	private EisenmannFinanceBo eisenmannFinanceBo;
 
-	private CashInAdvInfo ciaItem = new CashInAdvInfo();
+	private CashInAdvance ciaItem = new CashInAdvance();
 	
 
 	
@@ -39,7 +40,7 @@ public class CashInAdvanceBean {
 			results.add("PrimeFaces is developed with passion!");
 		} else {
 			for (int i = 0; i < 10; i++) {
-				results.add(query + i);
+				//results.add(query + i);
 			}
 		}
 
@@ -57,7 +58,7 @@ public class CashInAdvanceBean {
 			results.add("PrimeFaces is developed with passion!");
 		} else {
 			for (int i = 0; i < 10; i++) {
-				results.add(query + i);
+				//results.add(query + i);
 			}
 		}
 
@@ -69,11 +70,11 @@ public class CashInAdvanceBean {
 		return target + "?faces-redirect=true&";
 	}
 
-	public CashInAdvInfo getCiaItem() {
+	public CashInAdvance getCiaItem() {
 		return ciaItem;
 	}
 
-	public void setCiaItem(CashInAdvInfo ciaItem) {
+	public void setCiaItem(CashInAdvance ciaItem) {
 		this.ciaItem = ciaItem;
 	}
 

@@ -12,7 +12,18 @@
 			}
 		</style>
 		<script type="text/javascript">
- 
+
+
+			function handleMailSent(xhr, status, args) {
+				if(args.validationFailed) {
+					//jQuery('#newReviewDlg').effect("shake", { times:4 }, 100);
+				} else {
+					mailDialog.hide();
+					
+				}
+			}			
+
+
  			
 		</script>		
 	</ui:define>
@@ -33,7 +44,7 @@
 						
 						<p:commandButton action="addCashInAdvanceItem.xhtml?faces-redirect=true" ajax="false"  value="Add New" icon="ui-icon-document" />
 						<p:separator />
-						<p:commandButton value="Refresh" icon="ui-icon-refresh" action="#{cashInAdvanceListBean.reload}" update=":form:items  @parent"/>
+						<p:commandButton value="Refresh" icon="ui-icon-refresh" action="#{cashInAdvanceListBean.reload}" update=":form:items "/>
 						
 						
 					</p:toolbarGroup>
@@ -105,25 +116,47 @@
 			                <f:facet name="input"><p:inputText value="#{item.remark2}" style="width:96%" /></f:facet>
 			            </p:cellEditor>
 			        </p:column>
-					<p:column style="width:2%" exportable="false">  
-						<p:commandButton action="addCashInAdvanceItem.xhtml?faces-redirect=true" ajax="false"  value="." icon="ui-icon-mail-closed" />
+
+					<p:column style="width:2%">
+						<p:commandButton id="selectButton" update=":form:display" action="#{cashInAdvanceListBean.updateMailContent}" oncomplete="PF('mailDialog').show()" icon="ui-icon-mail-closed" title="Send Mail">
+							<f:setPropertyActionListener value="#{item}" target="#{cashInAdvanceListBean.selectedCashInAdvance}" />
+						</p:commandButton>
 					</p:column>					
-			        <!-- 	        			        			        			
-			        <p:column headerText="Balance" style="width:25%">
-			            <p:cellEditor>
-			                <f:facet name="output"><h:outputText value="#{car.manufacturer}" /></f:facet>
-			                <f:facet name="input">
-			                    <h:selectOneMenu value="#{car.manufacturer}" style="width:100%">
-			                        <f:selectItems value="#{tableBean.manufacturers}" var="man" itemLabel="#{man}" itemValue="#{man}" />
-			                    </h:selectOneMenu>
-			                </f:facet>
-			            </p:cellEditor>
-			        </p:column>
-					 -->		
+
 
 			
 			    </p:dataTable>
-			
+
+				<p:dialog header="Send Mail Detail" widgetVar="mailDialog" resizable="false" id="ciaDlg"
+							showEffect="fade" hideEffect="fold" modal="true">
+
+					<h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
+
+						<f:facet name="header">
+							
+						</f:facet>
+
+						<h:outputText value="To:" />
+						<p:inputText id="sendTo" value="#{cashInAdvanceListBean.mailItem.sendTo}" size="130"/>
+						
+						<h:outputText value="Cc:" />
+						<p:inputText id="sendCc" value="#{cashInAdvanceListBean.mailItem.sendCc}" size="130"/>
+
+
+						<h:outputText value="Subject:" />
+						<p:inputText id="mailSubject" value="#{cashInAdvanceListBean.mailItem.subject}" size="130"/>
+
+						<p:graphicImage value="../resources/images/mail.jpg"/>
+						<p:inputTextarea id="remark1" rows="20" cols="150" value="#{cashInAdvanceListBean.mailItem.content}"  />  
+			          
+						<f:facet name="footer">								
+								<p:commandButton id="mailButton" value="Send Mail"  icon="ui-icon-mail-closed" style="align=right"
+									actionListener="#{cashInAdvanceListBean.sendMail}" oncomplete="handleMailSent(xhr, status, args)"/>									
+						</f:facet>							
+
+					</h:panelGrid>
+
+				</p:dialog>				
 			
 			</h:form>				
 	</div>

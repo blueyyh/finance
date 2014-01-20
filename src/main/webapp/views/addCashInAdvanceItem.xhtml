@@ -45,11 +45,15 @@
 			
 				<p:panel header="Cash In Advance" >
 					<h:panelGrid columns="2" id="grid1" cellpadding="5">
-						<h:outputLabel value="Chinese Name: *" for="chnName"></h:outputLabel>
+						<h:outputLabel value="Chinese Name: *" for="chnName"/>
 						<p:inputText id="chnName" value="#{cashInAdvanceBean.ciaItem.chnName}" required="true" />
 						
-						<h:outputLabel value="Employee Name: *" for="empName"></h:outputLabel>
+						<h:outputLabel value="Employee Name: *" for="empName"/>
 						<p:inputText id="empName" value="#{cashInAdvanceBean.ciaItem.empName}" />
+
+						<h:outputLabel value="Email Address: *" for="mailAddress"/>
+						<p:inputText id="mailAddress" value="#{cashInAdvanceBean.ciaItem.mailAddress}" />
+
 						
 			            <h:outputText value="Balance: " for="balance" />  
 			            <p:inputText id="balance" value="#{cashInAdvanceBean.ciaItem.balance}"/> 		
@@ -67,7 +71,8 @@
 			            <p:inputTextarea id="remark2" rows="10" cols="50" value="#{cashInAdvanceBean.ciaItem.remark2}" completeMethod="#{cashInAdvanceBean.completeArea2}" queryDelay="750" minQueryLength="4" />  
 
 						<p:commandButton value="reset" icon="ui-icon-trash" type="reset"/>
-						<p:commandButton value="save" icon="ui-icon-disk" action="#{cashInAdvanceBean.save('listCashInAdvanceItems.xhtml')}"/>						  
+						<p:commandButton value="save" icon="ui-icon-disk" action="#{cashInAdvanceBean.save('listCashInAdvanceItems.xhtml')}"/>			
+					
 					</h:panelGrid>
 				</p:panel>
 

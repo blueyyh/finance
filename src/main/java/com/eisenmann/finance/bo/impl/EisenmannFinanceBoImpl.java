@@ -19,21 +19,25 @@ public class EisenmannFinanceBoImpl implements EisenmannFinanceBo {
 	@Autowired
 	private CashInAdvanceDao cashInAdvanceDao;
 	
-	public void saveCashInAdvance(CashInAdvInfo ciaInfo) {
-		CashInAdvance model = new CashInAdvance();
-		model.setBalance(ciaInfo.getBalance());
-		model.setChnName(ciaInfo.getChnName());
-		
-		model.setDate(new java.sql.Date(ciaInfo.getDate().getTime()));
-		model.setEmpName(ciaInfo.getEmpName());
-		model.setMailAddress(ciaInfo.getMailAddress());
-		model.setRemark1(ciaInfo.getRemark1());
-		model.setRemark2(ciaInfo.getRemark2());
-		model.setVouchNo(ciaInfo.getVouchNo());
-		cashInAdvanceDao.addCashInAdvance(model);
+	public void saveCashInAdvance(CashInAdvance ciaInfo) {
+//		CashInAdvance model = new CashInAdvance();
+//		model.setBalance(ciaInfo.getBalance());
+//		model.setChnName(ciaInfo.getChnName());
+//		
+//		model.setDate(new java.sql.Date(ciaInfo.getDate().getTime()));
+//		model.setEmpName(ciaInfo.getEmpName());
+//		model.setMailAddress(ciaInfo.getMailAddress());
+//		model.setRemark1(ciaInfo.getRemark1());
+//		model.setRemark2(ciaInfo.getRemark2());
+//		model.setVouchNo(ciaInfo.getVouchNo());
+		cashInAdvanceDao.addCashInAdvance(ciaInfo);
 	}
 	
 	public List<CashInAdvance> getAllCashInAdvance() {
 		return cashInAdvanceDao.getAllCashInAdvance();
+	}
+	
+	public void mergeCashInAdvance(CashInAdvance cia) {
+		cashInAdvanceDao.mergeCashInAdvance(cia);
 	}
 }

@@ -30,6 +30,11 @@ public class CashInAdvanceDaoImpl implements CashInAdvanceDao {
 	public void addCashInAdvance(CashInAdvance ca) {
 		currentSession().save(ca);
 	}
+
+	public void mergeCashInAdvance(CashInAdvance ca) {
+		currentSession().merge(ca);
+	}
+	
 	
 	public void updateCashInAdvance(CashInAdvance ca) {
 		currentSession().update(ca);
