@@ -10,7 +10,7 @@
 	<h:head>
         <f:facet name="first">
             <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-            <title>Sprout Auth</title>
+            <title>Eisenmann Finance</title>
         </f:facet>
         
         <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/default.css" />
@@ -58,8 +58,9 @@
 						<p:growl id="messages" autoUpdate="true"/>  
 					  
 						<p:panelMenu style="width:200px">  
-							<p:submenu label="帐号管理" rendered="true">  
-								<p:menuitem value="PMS 模拟"  icon="ui-icon-star" /> 						
+							<p:submenu label="System Management" rendered="true">  
+								<p:menuitem value="Add Cash In Advance Item" outcome="/views/addCashInAdvanceItem.xhtml" icon="ui-icon-disk" /> 	
+								<p:menuitem value="List Cash In Advance"  outcome="/views/listCashInAdvanceItems.xhtml" icon="ui-icon-document" /> 						
 							</p:submenu>  
 
 						</p:panelMenu>  
@@ -79,7 +80,7 @@
         </div>
 
 		<div id="footer" class="ui-widget ui-widget-header ui-corner-all">
-			<p class="copyright">Sprout @ all rights reserved, 2013 </p>
+			<p class="copyright">Eisenmann @ all rights reserved, 2014 </p>
 		</div>
 		<!--
             <p:dock id="dockTop" >
