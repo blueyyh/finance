@@ -121,11 +121,9 @@
 						<p:commandButton id="selectButton" update=":form:display" action="#{cashInAdvanceListBean.updateMailContent}" oncomplete="PF('mailDialog').show()" icon="ui-icon-mail-closed" title="Send Mail">
 							<f:setPropertyActionListener value="#{item}" target="#{cashInAdvanceListBean.selectedCashInAdvance}" />
 						</p:commandButton>
-					</p:column>					
-
-
-			
+					</p:column>	
 			    </p:dataTable>
+
 
 				<p:dialog header="Send Mail Detail" widgetVar="mailDialog" resizable="false" id="ciaDlg"
 							showEffect="fade" hideEffect="fold" modal="true">
@@ -150,7 +148,7 @@
 						<p:inputTextarea id="remark1" rows="20" cols="150" value="#{cashInAdvanceListBean.mailItem.content}"  />  
 			          
 						<f:facet name="footer">								
-								<p:commandButton id="mailButton" value="Send Mail"  icon="ui-icon-mail-closed" style="align=right"
+								<p:commandButton id="mailButton" value="Send Mail"  icon="ui-icon-mail-closed" 
 									actionListener="#{cashInAdvanceListBean.sendMail}" oncomplete="handleMailSent(xhr, status, args)"/>									
 						</f:facet>							
 

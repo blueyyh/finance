@@ -16,6 +16,7 @@ import javax.mail.internet.MimeMessage;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -26,7 +27,7 @@ import com.eisenmann.finance.model.AMailSendItem;
 import com.eisenmann.finance.model.CashInAdvance;
 
 @Component
-@RequestScoped
+@Scope("request")
 public class CashInAdvanceListBean {
 
 	@Autowired
@@ -34,7 +35,7 @@ public class CashInAdvanceListBean {
 
 	private List<CashInAdvance> modelList;
 
-	private CashInAdvance selectedCashInAdvance;
+	private CashInAdvance selectedCashInAdvance = new CashInAdvance();
 
 	private AMailSendItem mailItem = new AMailSendItem();
 

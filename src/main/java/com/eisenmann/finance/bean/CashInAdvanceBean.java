@@ -3,19 +3,16 @@ package com.eisenmann.finance.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.eisenmann.finance.bo.EisenmannFinanceBo;
 import com.eisenmann.finance.model.CashInAdvance;
 
-@ManagedBean
+
 @Component
-@RequestScoped
+@Scope("request")
 public class CashInAdvanceBean {
 
 	@Autowired	
